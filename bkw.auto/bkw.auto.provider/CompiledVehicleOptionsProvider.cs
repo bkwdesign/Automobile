@@ -36,20 +36,20 @@ namespace bkw.auto.provider
             switch (kind)
             {
                 case VehicleKind.EconomyCar:
-                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Front Wheel Drive", Quantity = 1 });
-                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1 });
+                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Front Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.EconomyCar });
+                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.EconomyCar });
                     break;
                 case VehicleKind.SportsCar:
-                    options.Add(new DriveTrainOption { Brand = "Mercury", Name = "DriveType", Description = "Four Wheel Drive", Quantity = 1 });
-                    options.Add(new DriveTrainOption { Brand = "Mercury", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1 });
+                    options.Add(new DriveTrainOption { Brand = "Mercury", Name = "DriveType", Description = "Four Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.SportsCar });
+                    options.Add(new DriveTrainOption { Brand = "Mercury", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.SportsCar });
                     break;
                 case VehicleKind.TruckCommercial:
-                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1 });
+                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.TruckCommercial });
                     break;
                 case VehicleKind.TruckPickup:
-                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "All Wheel Drive", Quantity = 1 });
-                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Front Wheel Drive", Quantity = 1 });
-                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1 });
+                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "All Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.EconomyCar | VehicleKind.TruckPickup });
+                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Front Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.EconomyCar | VehicleKind.TruckPickup });
+                    options.Add(new DriveTrainOption { Brand = "Ford", Name = "DriveType", Description = "Rear Wheel Drive", Quantity = 1, CompatibileKinds = VehicleKind.EconomyCar | VehicleKind.TruckPickup });
                     break;
             }
 
@@ -102,22 +102,22 @@ namespace bkw.auto.provider
             switch (kind)
             {
                 case VehicleKind.EconomyCar:
-                    options.Add(new ExteriorOption { Name = "Towing", Brand = "--", Description = "(NONE OFFERED)", Quantity = 0 });
-                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "--", Description = "(NONE OFFERED)", Quantity = 1 });
+                    options.Add(new ExteriorOption { Name = "Towing", Brand = "--", Description = "(NONE OFFERED)", Quantity = 0, CompatibileKinds = VehicleKind.EconomyCar });
+                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "--", Description = "(NONE OFFERED)", Quantity = 1, CompatibileKinds = VehicleKind.EconomyCar });
                     break;
                 case VehicleKind.SportsCar:
-                    options.Add(new ExteriorOption { Name = "Towing", Brand = "--", Description = "(NONE OFFERED)", Quantity = 0 });
-                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "Ford", Description = "Light Duty Rack", Quantity = 1 });
+                    options.Add(new ExteriorOption { Name = "Towing", Brand = "--", Description = "(NONE OFFERED)", Quantity = 0, CompatibileKinds = VehicleKind.SportsCar });
+                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "Ford", Description = "Light Duty Rack", Quantity = 1, CompatibileKinds = VehicleKind.SportsCar });
                     break;
                 case VehicleKind.TruckCommercial:
-                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "2 inch ball", Quantity = 1 });
-                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "Sway Bar w/ball", Quantity = 1 });
-                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "--", Description = "(NONE OFFERED)", Quantity = 0 });
+                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "2 inch ball", Quantity = 1, CompatibileKinds = VehicleKind.TruckCommercial });
+                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "Sway Bar w/ball", Quantity = 1, CompatibileKinds = VehicleKind.TruckCommercial });
+                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "--", Description = "(NONE OFFERED)", Quantity = 0, CompatibileKinds = VehicleKind.TruckCommercial });
                     break;
                 case VehicleKind.TruckPickup:
-                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "2 inch ball", Quantity = 1 });
-                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "Sway Bar w/ball", Quantity = 1 }); 
-                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "Ford", Description = "Heavy Duty Rack", Quantity = 1 });
+                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "2 inch ball", Quantity = 1, CompatibileKinds =  VehicleKind.TruckPickup });
+                    options.Add(new ExteriorOption { Name = "Towing", Brand = "Ford", Description = "Sway Bar w/ball", Quantity = 1, CompatibileKinds =  VehicleKind.TruckPickup }); 
+                    options.Add(new ExteriorOption { Name = "LuggageRack", Brand = "Ford", Description = "Heavy Duty Rack", Quantity = 1, CompatibileKinds =  VehicleKind.TruckPickup });
                     break;
             }
 
