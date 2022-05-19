@@ -31,9 +31,135 @@ I also created a hard instance of `IVehicle`, per each `VehicleKind` - these eac
 We can then implement the desired specialty options within each kind of vehicle class. For example: the `EnconomyCar` employs an instance of `StandardDriveTrain` while the `TruckCommerical` has a `HeavyDriveTrain`. The `SportsCar` has a `DeluxeInterior` and `AftermarketExterior` whereas some of the other vehicles have standard/factory options.
 
 There is a `bkw.auto.api.test` project for testing out some of the logic in this `bkw.auto.biz` library
+> Example C# Program
+```csharp
+IVehicleOptionsProvider vehicleOptionsProvider = new bkw.auto.provider.CompiledVehicleOptionsProvider();
 
+IVehicle fordPinto = EconomyCar.BuildCar("Ford Pinto", vehicleOptionsProvider);
+
+Console.WriteLine($"{fordPinto}");//short description will print with default ToString implementation
+
+Console.WriteLine($"{fordPinto.ToLongString()}");//special long description
+```
+
+> Example Console Output
+```
+  This Ford Pinto is a Economy Car that has a StandardDriveTrain (w/4 available options) , StandardInterior (w/3 available options) and FactoryExterior (w/4 available options)
+  This Ford Pinto is a Economy Car that has a 2 DriveType options [Front Wheel Drive, Rear Wheel Drive], 2 Tire options [All Weather Radial, All Weather Radial - Whitewall], bkw.auto.biz.interior.InteriorOption, 2 Seats options [Vinyl-Bucket, Vinyl-Standard] and 2 Color options [Plain Red, Powder White]
+```
 ## bkw.auto.api
 Most of my professional experience is with ASP.NET WebAPI 2 - and manually adding Swashbuckle into the mix (with a little pain and suffering on the side fiddling with an EDMX model).  I thought I'd give the dotnet 6 webapi template a whirl - WHAT A DIFFERENCE - and the integration of the Swagger UI is already a done deal!
 This Web API can serve up a list of Vehicle options, as well as complete instances of IVehicle.
 
 There is currently no database, and the options are loaded in memory by a [CompiledVehicleOptionsProvider](bkw.auto/bkw.auto.provider/CompiledVehicleOptionsProvider.cs) (which is also used in the `bkw.auto.biz.tests` project)
+
+> Example Web API response - GET /api/Vehicle?kind=EconomyCar
+```json
+{
+  "driveTrain": {
+    "requirements": [
+      "DriveType",
+      "Tire"
+    ],
+    "availableOptions": [
+      {
+        "compatibileKinds": -2,
+        "brand": "Ford",
+        "name": "DriveType",
+        "description": "Front Wheel Drive",
+        "quantity": 1
+      },
+      {
+        "compatibileKinds": -2,
+        "brand": "Ford",
+        "name": "DriveType",
+        "description": "Rear Wheel Drive",
+        "quantity": 1
+      },
+      {
+        "compatibileKinds": -14,
+        "brand": "Michelin",
+        "name": "Tire",
+        "description": "All Weather Radial",
+        "quantity": 4
+      },
+      {
+        "compatibileKinds": -14,
+        "brand": "Michelin",
+        "name": "Tire",
+        "description": "All Weather Radial - Whitewall",
+        "quantity": 4
+      }
+    ],
+    "selectedOptions": []
+  },
+  "interior": {
+    "requirements": [
+      "A/C",
+      "Seats"
+    ],
+    "availableOptions": [
+      {
+        "compatibileKinds": -2,
+        "brand": "Ford",
+        "name": "Seats",
+        "description": "Vinyl-Bucket",
+        "quantity": 1
+      },
+      {
+        "compatibileKinds": -2,
+        "brand": "Ford",
+        "name": "Seats",
+        "description": "Vinyl-Standard",
+        "quantity": 1
+      },
+      {
+        "compatibileKinds": -2,
+        "brand": "AC Delco",
+        "name": "A/C",
+        "description": "Single Temp Dash Control",
+        "quantity": 1
+      }
+    ],
+    "selectedOptions": []
+  },
+  "exterior": {
+    "requirements": [
+      "Color"
+    ],
+    "availableOptions": [
+      {
+        "compatibileKinds": 2,
+        "brand": "Ford",
+        "name": "Color",
+        "description": "Plain Red",
+        "quantity": 1
+      },
+      {
+        "compatibileKinds": 2,
+        "brand": "Ford",
+        "name": "Color",
+        "description": "Powder White",
+        "quantity": 1
+      },
+      {
+        "compatibileKinds": -2,
+        "brand": "--",
+        "name": "Towing",
+        "description": "(NONE OFFERED)",
+        "quantity": 0
+      },
+      {
+        "compatibileKinds": -2,
+        "brand": "--",
+        "name": "LuggageRack",
+        "description": "(NONE OFFERED)",
+        "quantity": 1
+      }
+    ],
+    "selectedOptions": []
+  },
+  "name": "Ford Escape",
+  "description": "Economy Car"
+}
+```
