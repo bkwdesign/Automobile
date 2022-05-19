@@ -8,7 +8,7 @@ This is currently an API focused solution. Right click `bkw.auto.api` and set it
 ## bkw.auto.interfaces
 This experimetal vehicle modeling concept is designed to allow a dealership to show 4 popular types (i.e. [VehicleKind](bkw.auto/bkw.auto.interfaces/VehicleKind.cs)) of cars for sale, and available options for those cars. Conceivably, users could select from available options and request a quote - but I haven't taken the API that far (and there's no UI outside the Swagger UI at the moment)
 
-Initially the modeling of the car was conceived as a long list of [IVehicleOption](bkw.auto/bkw.auto.interfaces/IVehicleOption.cs) objects, but to aid a possible UI design, I decided to group options into smaller [IVehicleOptionModel](bkw.auto/bkw.auto.interfaces/IVehicleOptionModel.cs)s of options centered around `DriveTrain`, `Interior` and `Exterior`
+Initially the modeling of the car was conceived as a long list of [IVehicleOption](bkw.auto/bkw.auto.interfaces/IVehicleOption.cs) objects, but to aid a possible UI design, I decided to group options into smaller [IVehicleOptionModel](bkw.auto/bkw.auto.interfaces/IVehicleOptionModel.cs)s centered around `DriveTrain`, `Interior` and `Exterior`
 
 I can imagine a UI implementation binding to an instance of [IVehicle](bkw.auto/bkw.auto.interfaces/IVehicle.cs) as a kind of ViewModel - and present it's available options for DriveTrain, Interior and Exterior on separate tabs or dedicatd DOM sections.
 
