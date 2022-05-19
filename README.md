@@ -1,8 +1,12 @@
 # bkw.auto
 This is currently an API focused solution. Right click `bkw.auto.api` and set it as the default project. Press `F5` to run the api
 
+> Video Demos
+- https://www.youtube.com/watch?v=xX8LWwvoD44
+- https://www.youtube.com/watch?v=MdCpxKtAO_c
+
 ## bkw.auto.interfaces
-This experimetal vehicle modeling concept is designed to allow a dealership to show 4 popular types (i.e. [VehicleKind](bkw.auto/bkw.auto.interfaces/VehicleKind.cs)) of cars for sale, and available options for those cars. 
+This experimetal vehicle modeling concept is designed to allow a dealership to show 4 popular types (i.e. [VehicleKind](bkw.auto/bkw.auto.interfaces/VehicleKind.cs)) of cars for sale, and available options for those cars. Conceivably, users could select from available options and request a quote - but I haven't taken the API that far (and there's no UI outside the Swagger UI at the moment)
 
 Initially the modeling of the car was conceived as a long list of [IVehicleOption](bkw.auto/bkw.auto.interfaces/IVehicleOption.cs) objects, but to aid a possible UI design, I decided to group options into smaller [IVehicleOptionModel](bkw.auto/bkw.auto.interfaces/IVehicleOptionModel.cs)s of options centered around `DriveTrain`, `Interior` and `Exterior`
 
@@ -30,7 +34,7 @@ I also created a hard instance of `IVehicle`, per each `VehicleKind` - these eac
 
 We can then implement the desired specialty options within each kind of vehicle class. For example: the `EnconomyCar` employs an instance of `StandardDriveTrain` while the `TruckCommerical` has a `HeavyDriveTrain`. The `SportsCar` has a `DeluxeInterior` and `AftermarketExterior` whereas some of the other vehicles have standard/factory options.
 
-There is a `bkw.auto.api.test` project for testing out some of the logic in this `bkw.auto.biz` library
+There is a `bkw.auto.api.tests` project for testing out some of the logic in this `bkw.auto.biz` library
 > Example C# Program
 ```csharp
 IVehicleOptionsProvider vehicleOptionsProvider = new bkw.auto.provider.CompiledVehicleOptionsProvider();
@@ -63,28 +67,28 @@ There is currently no database, and the options are loaded in memory by a [Compi
     ],
     "availableOptions": [
       {
-        "compatibileKinds": -2,
+        "compatibileKinds": 2,
         "brand": "Ford",
         "name": "DriveType",
         "description": "Front Wheel Drive",
         "quantity": 1
       },
       {
-        "compatibileKinds": -2,
+        "compatibileKinds": 2,
         "brand": "Ford",
         "name": "DriveType",
         "description": "Rear Wheel Drive",
         "quantity": 1
       },
       {
-        "compatibileKinds": -14,
+        "compatibileKinds": 18,
         "brand": "Michelin",
         "name": "Tire",
         "description": "All Weather Radial",
         "quantity": 4
       },
       {
-        "compatibileKinds": -14,
+        "compatibileKinds": 18,
         "brand": "Michelin",
         "name": "Tire",
         "description": "All Weather Radial - Whitewall",
@@ -100,21 +104,21 @@ There is currently no database, and the options are loaded in memory by a [Compi
     ],
     "availableOptions": [
       {
-        "compatibileKinds": -2,
+        "compatibileKinds": 30,
         "brand": "Ford",
         "name": "Seats",
         "description": "Vinyl-Bucket",
         "quantity": 1
       },
       {
-        "compatibileKinds": -2,
+        "compatibileKinds": 30,
         "brand": "Ford",
         "name": "Seats",
         "description": "Vinyl-Standard",
         "quantity": 1
       },
       {
-        "compatibileKinds": -2,
+        "compatibileKinds": 30,
         "brand": "AC Delco",
         "name": "A/C",
         "description": "Single Temp Dash Control",
@@ -143,14 +147,14 @@ There is currently no database, and the options are loaded in memory by a [Compi
         "quantity": 1
       },
       {
-        "compatibileKinds": -2,
+        "compatibileKinds": 2,
         "brand": "--",
         "name": "Towing",
         "description": "(NONE OFFERED)",
         "quantity": 0
       },
       {
-        "compatibileKinds": -2,
+        "compatibileKinds": 2,
         "brand": "--",
         "name": "LuggageRack",
         "description": "(NONE OFFERED)",
