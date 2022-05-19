@@ -8,6 +8,6 @@ namespace bkw.auto.interfaces
         EconomyCar=2,
         SportsCar=4,
         TruckCommercial=8,
-        TruckPickup=-16
+        TruckPickup=16
     }
 }
