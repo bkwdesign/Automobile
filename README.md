@@ -48,8 +48,8 @@ Console.WriteLine($"{fordPinto.ToLongString()}");//special long description
 
 > Example Console Output
 ```
-  This Ford Pinto is a Economy Car that has a StandardDriveTrain (w/4 available options) , StandardInterior (w/3 available options) and FactoryExterior (w/4 available options)
-  This Ford Pinto is a Economy Car that has a 2 DriveType options [Front Wheel Drive, Rear Wheel Drive], 2 Tire options [All Weather Radial, All Weather Radial - Whitewall], bkw.auto.biz.interior.InteriorOption, 2 Seats options [Vinyl-Bucket, Vinyl-Standard] and 2 Color options [Plain Red, Powder White]
+This Ford Pinto is a Economy Car that has a StandardDriveTrain (w/4 available options) , StandardInterior (w/3 available options) and FactoryExterior (w/4 available options)
+This Ford Pinto is a Economy Car that has a 2 DriveType options [Front Wheel Drive, Rear Wheel Drive], 2 Tire options [All Weather Radial, All Weather Radial - Whitewall], AC Delco A/C package: Single Temp Dash Control, 2 Seats options [Vinyl-Bucket, Vinyl-Standard] and 2 Color options [Plain Red, Powder White]
 ```
 ## bkw.auto.api
 Most of my professional experience is with ASP.NET WebAPI 2 - and manually adding Swashbuckle into the mix (with a little pain and suffering on the side fiddling with an EDMX model).  I thought I'd give the dotnet 6 webapi template a whirl - WHAT A DIFFERENCE - and the integration of the Swagger UI is already a done deal!

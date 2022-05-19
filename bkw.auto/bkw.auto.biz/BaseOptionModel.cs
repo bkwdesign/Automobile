@@ -37,7 +37,7 @@ namespace bkw.auto.biz
                 {
                     //if there's only a single option of this type of requirement
                     //print out the whole .ToString of that VehicleOption
-                    sb.Append($"{opts.First()}");
+                    sb.Append($"{opts.First().Brand} {opts.First().Name} package: {opts.First().Description}");
 
                 }
                 else if (opts.Count() > 1)
